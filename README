@@ -1,0 +1,10 @@
+# 💻 How to run on my machine
+
+## 🐳 Docker-compose
+
+### Dependencies
+  - Docker: Docker version 20.10.14
+  - Docker compose: Docker-compose version 2.3.3
+  
+### start using the npm run script
+  - npm run docker
