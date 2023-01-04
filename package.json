@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker": "docker build -t ecommerce-app . && docker run -p 3000:3000 ecommerce-app",
+    "docker:reset": "docker compose down && docker compose up --build"
   },
   "dependencies": {
     "@next/font": "13.1.1",
