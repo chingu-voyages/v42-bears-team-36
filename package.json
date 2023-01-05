@@ -2,19 +2,21 @@
   "name": "ecommerce-app",
   "version": "0.1.0",
   "private": true,
+    "next": "13.1.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "docker": "docker build -t ecommerce-app . && docker run -p 3000:3000 ecommerce-app",
-    "docker:reset": "docker compose down && docker compose up --build"
+    "compose:up": "docker compose up -d --build",
+    "compose:down": "docker compose down --remove-orphans",
+    "compose:reset": "npm run compose:down && npm run compose:up"
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "next": "13.1.1",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
-    "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }
