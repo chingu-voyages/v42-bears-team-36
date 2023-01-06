@@ -1,29 +1,29 @@
-# name: CD
+name: CD
 
-# on:
-#   push:
-#     branches:
-#       - main
-# jobs:
-#   Deploy:
-#     runs-on: ubuntu-latest
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       # Check out the code
-#       - uses: actions/checkout@v2
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v2
 
-#       # Set up Node.js
-#       - uses: actions/setup-node@v2
-#         with:
-#           node-version: 18.x
+      # Set up Node.js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
 
-#       # Install dependencies
-#       - run: npm install
+      # Install dependencies
+      - run: npm install
 
-#       - run: npm run build
+      - run: npm run build
       
-#       # test
-#       - run: npm test
+      # test
+      - run: npm test
 
 #       # deploy
 #       - name: Deploy next app in vercel
