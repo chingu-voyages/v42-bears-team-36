@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  Checks-Before-Merging:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v2
+
+      # Set up Node.js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+
+      # Install dependencies
+      - run: npm install
+
+      - run: npm run pre-commit
+      - run: npm run test:ci
