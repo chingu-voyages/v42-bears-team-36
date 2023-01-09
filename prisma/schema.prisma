@@ -6,19 +6,19 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
-
 
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String
+  password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  role      Role     @default(USER)
+  role      Role     @default(CUSTOMER)
   profile   Profile?
 
   @@unique([id, email])
@@ -26,13 +26,15 @@ model User {
 }
 
 enum Role {
-  ADMIN
-  USER
+  CUSTOMER
+  EMPLOYEE
+  EMPLOYER
 }
+
 model Profile {
   id        Int      @id @default(autoincrement())
-  bio       String?
-  avatar    String?
+  bio       String?  @default("I am a new user")
+  avatar    String?  @default("https://xsgames.co/randomusers/avatar.php?g=pixel")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userId], references: [id])
