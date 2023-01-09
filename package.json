@@ -2,7 +2,7 @@
   "name": "ecommerce-app",
   "version": "0.1.0",
   "private": true,
-    "next": "13.1.1",
+  "next": "13.1.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,14 +10,42 @@
     "lint": "next lint",
     "compose:up": "docker compose up -d --build",
     "compose:down": "docker compose down --remove-orphans",
-    "compose:reset": "npm run compose:down && npm run compose:up"
+    "compose:reset": "npm run compose:down && npm run compose:up",
+    "test:ci": "jest --ci",
+    "test": "jest --watchAll --coverage",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "pre-push": "node scripts/pre-push.js",
+    "push:simulate": "git push --dry-run"
   },
   "dependencies": {
     "@next/font": "13.1.1",
-    "next": "13.1.1",
+    "@prisma/client": "^4.8.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "axios": "^1.2.2",
+    "bcrypt": "^5.1.0",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
+    "js-cookie": "^3.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "next": "13.1.1",
+    "next-auth": "^4.18.7",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.4.0",
+    "husky": "^8.0.3",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "lint-staged": "^13.1.0",
+    "prisma": "^4.8.1"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint --fix",
+      "eslint",
+      "jest --passWithNoTests"
+    ]
   }
 }
