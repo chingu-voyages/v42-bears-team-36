@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
