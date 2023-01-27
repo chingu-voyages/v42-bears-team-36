@@ -17,4 +17,6 @@ COPY . .
 RUN npm run build
 
 # Start the server using the production build
-CMD [ "npm", "start" ]
+CMD npx prisma db push && \
+    npx prisma db seed && \
+    npm start
